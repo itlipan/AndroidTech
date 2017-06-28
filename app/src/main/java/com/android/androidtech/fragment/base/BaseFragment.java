@@ -64,7 +64,6 @@ public abstract class BaseFragment extends Fragment {
             arg = new Bundle();
         }
         initData(arg);
-        ;
     }
 
 

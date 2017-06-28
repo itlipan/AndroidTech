@@ -118,7 +118,7 @@ public class ListViewFragment extends BaseFragment {
                 convertView = mInflater.inflate(R.layout.item_listview_test, null);//根据布局文件实例化view
                 itemHolder = new ItemHolder();
                 itemHolder.title = (TextView) convertView.findViewById(R.id.title);//找某个控件
-                itemHolder.time = (TextView) convertView.findViewById(R.id.time);//找某个控件
+                itemHolder.time = (TextView) convertView.findViewById(R.id.time);
                 itemHolder.info = (TextView) convertView.findViewById(R.id.info);
                 itemHolder.img = (ImageView) convertView.findViewById(R.id.img);
                 convertView.setTag(itemHolder);

@@ -19,26 +19,21 @@ import com.android.androidtech.fragment.base.BaseFragment;
  * UI Home page Fragment
  */
 public class UiPerfFragment extends BaseFragment implements View.OnClickListener {
-    private Button mBtn_OverDraw,mBtn_Xml,mBtn_ListView,mBtn_Merge;
+    private Button mBtn_OverDraw, mBtn_Xml, mBtn_ListView, mBtn_Merge;
     private Context mContext = null;
+
     @Override
     protected View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mContext = getHostActivity();
         View view = inflater.inflate(R.layout.fm_ui_perf, container, false);
-        mBtn_OverDraw = (Button)view.findViewById(R.id.btn_overdraw);
+        mBtn_OverDraw = (Button) view.findViewById(R.id.btn_overdraw);
         mBtn_OverDraw.setOnClickListener(this);
-        mBtn_Xml = (Button)view.findViewById(R.id.btn_xml);
+        mBtn_Xml = (Button) view.findViewById(R.id.btn_xml);
         mBtn_Xml.setOnClickListener(this);
-        mBtn_ListView = (Button)view.findViewById(R.id.btn_listview);
+        mBtn_ListView = (Button) view.findViewById(R.id.btn_listview);
         mBtn_ListView.setOnClickListener(this);
-        mBtn_Merge = (Button)view.findViewById(R.id.btn_merge_layout);
-        mBtn_Merge.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(getHostActivity(), LayoutPerActivity.class);
-                ((HomePageActivity) mContext).startActivity(it);
-            }
-        });
+        mBtn_Merge = (Button) view.findViewById(R.id.btn_merge_layout);
+        mBtn_Merge.setOnClickListener(this);
         return view;
     }
 
@@ -84,15 +79,18 @@ public class UiPerfFragment extends BaseFragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == mBtn_OverDraw.getId()){
+        if (v.getId() == mBtn_OverDraw.getId()) { // 过度绘制
             Bundle mBundle = new Bundle();
             ((HomePageActivity) mContext).addSecondFragment(OverDrawFragment.class, mBundle, null);
-        }else if(v.getId() == mBtn_Xml.getId()){
+        } else if (v.getId() == mBtn_Xml.getId()) {
             Bundle mBundle = new Bundle();
             ((HomePageActivity) mContext).addSecondFragment(ViewStubDemoFragment.class, mBundle, null);
-        }else if(v.getId() == mBtn_ListView.getId()){
+        } else if (v.getId() == mBtn_ListView.getId()) {
             Bundle mBundle = new Bundle();
             ((HomePageActivity) mContext).addSecondFragment(ListViewFragment.class, mBundle, null);
+        } else if (v.getId() == mBtn_Merge.getId()) { //减少层级
+            Intent it = new Intent(getHostActivity(), LayoutPerActivity.class);
+            ((HomePageActivity) mContext).startActivity(it);
         }
     }
 }
